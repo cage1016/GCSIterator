@@ -1,0 +1,10 @@
+*~
+*.pyc
+.idea
+.DS_Store
+*.p12
+*.pem
+*.der
+
+# lib
+lib
