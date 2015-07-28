@@ -13,7 +13,7 @@ $ gcloud components update app
 $ gcloud components update gae-python
 
 # Clone repo from github
-$ git clone https://github.com/cage1016/gae-todomvc
+$ git clone https://github.com/cage1016/GCSIterator
 
 # Install pip packages
 $ sudo pip install -r requirements.txt -t lib
@@ -22,14 +22,17 @@ $ sudo pip install -r requirements.txt -t lib
 Replace your `bucket-name` and `object-name`. You may also modify `chunksize` at line 24 in `main.py` file.
 
 ```python
+# main.py
+...
+
 def get_authenticated_service():
   credentials = GoogleCredentials.get_application_default()
   http = credentials.authorize(httplib2.Http())
   return discovery_build('storage', 'v1', http=http)
 
 gcs_service = get_authenticated_service()
-bucket_name = '<your-bucket-name>'
-object_name = '<your-object-name>'
+bucket_name = '<your-bucket-name>' # waldo-gcp-file
+object_name = '<your-object-name>' # kaichu_1016_00000100.csv
 
 request = gcs_service.objects().get_media(bucket=bucket_name, object=object_name.encode('utf8'))
 iterator = GCSIterator(request, chunksize=512)
