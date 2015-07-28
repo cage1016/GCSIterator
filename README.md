@@ -13,7 +13,7 @@ $ gcloud components update app
 $ gcloud components update gae-python
 
 # Clone repo from github
-$ git clone https://github.com/cage1016/gae-todomvc
+$ git clone https://github.com/cage1016/GCSIterator
 
 # Install pip packages
 $ sudo pip install -r requirements.txt -t lib
@@ -22,6 +22,9 @@ $ sudo pip install -r requirements.txt -t lib
 Replace your `bucket-name` and `object-name`. You may also modify `chunksize` at line 24 in `main.py` file.
 
 ```python
+# main.py
+...
+
 def get_authenticated_service():
   credentials = GoogleCredentials.get_application_default()
   http = credentials.authorize(httplib2.Http())
